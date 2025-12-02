@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://f8e2qo1adewf"]
+
+[ext_resource type="Script" uid="uid://cunb1y0o1xds3" path="res://light_layer.gd" id="1_m815u"]
+[ext_resource type="Shader" uid="uid://dhallmoe80ee" path="res://light_layer.gdshader" id="2_g7bkg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mak4g"]
+shader = ExtResource("2_g7bkg")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/light_zone_color = Color(0, 0, 0, 1)
+shader_parameter/light_outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g7bkg"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m815u"]
+viewport_path = NodePath("SubViewport")
+
+[node name="LightLayer" type="CanvasLayer"]
+script = ExtResource("1_m815u")
+
+[node name="Surface" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mak4g")
+texture = SubResource("ViewportTexture_g7bkg")
+centered = false
+
+[node name="Debug" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("ViewportTexture_m815u")
+centered = false
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="DrawOn" type="Node2D" parent="SubViewport"]
+unique_name_in_owner = true

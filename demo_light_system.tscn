@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkfu4n5ravfne"]
+
+[ext_resource type="PackedScene" uid="uid://dhoco3g4c3qm7" path="res://character.tscn" id="1_78stm"]
+[ext_resource type="Texture2D" uid="uid://drhpctq0hyhqa" path="res://icon.svg" id="2_undem"]
+[ext_resource type="PackedScene" uid="uid://dbneisdksa3x4" path="res://light.tscn" id="3_g1val"]
+[ext_resource type="PackedScene" uid="uid://f8e2qo1adewf" path="res://light_layer.tscn" id="3_hw0qa"]
+
+[sub_resource type="Gradient" id="Gradient_1gwx2"]
+colors = PackedColorArray(0.455532, 0.339538, 9.62615e-08, 1, 0.926838, 0.472101, 0.347106, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_78stm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_undem"]
+width = 1152
+height = 648
+color_ramp = SubResource("Gradient_1gwx2")
+noise = SubResource("FastNoiseLite_78stm")
+
+[node name="DemoLightSystem" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_undem")
+centered = false
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(808, 416)
+texture = ExtResource("2_undem")
+
+[node name="Character" parent="." instance=ExtResource("1_78stm")]
+position = Vector2(240, 152)
+
+[node name="Light" parent="Character" instance=ExtResource("3_g1val")]
+radius = 80.0
+
+[node name="Light" parent="." instance=ExtResource("3_g1val")]
+position = Vector2(816, 240)
+radius = 90.0
+
+[node name="Light2" parent="." instance=ExtResource("3_g1val")]
+position = Vector2(680, 432)
+radius = 90.0
+
+[node name="FlickeringLight" parent="." instance=ExtResource("3_g1val")]
+position = Vector2(504, 472)
+radius = 180.0
+light_flickering = true
+
+[node name="LightLayer" parent="." instance=ExtResource("3_hw0qa")]
+visible = false
+custom_light_outline_size = 20.0
+shadow_color = Color(0, 0, 0.223529, 0.878431)
