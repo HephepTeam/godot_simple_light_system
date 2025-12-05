@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://f8e2qo1adewf"]
+[gd_scene load_steps=8 format=3 uid="uid://f8e2qo1adewf"]
 
 [ext_resource type="Script" uid="uid://cunb1y0o1xds3" path="res://light_layer.gd" id="1_m815u"]
 [ext_resource type="Shader" uid="uid://dhallmoe80ee" path="res://light_layer.gdshader" id="2_g7bkg"]
+[ext_resource type="Shader" uid="uid://bxbeufwlbat6w" path="res://blackpoint.gdshader" id="3_mak4g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mak4g"]
 shader = ExtResource("2_g7bkg")
@@ -15,6 +16,10 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_m815u"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc07g"]
+shader = ExtResource("3_mak4g")
+shader_parameter/black_point = Color(0, 0, 0, 0)
+
 [node name="LightLayer" type="CanvasLayer"]
 script = ExtResource("1_m815u")
 
@@ -27,6 +32,14 @@ centered = false
 visible = false
 texture = SubResource("ViewportTexture_m815u")
 centered = false
+
+[node name="BlackPoint" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oc07g")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1152, 648)

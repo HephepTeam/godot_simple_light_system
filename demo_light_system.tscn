@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dkfu4n5ravfne"]
 
 [ext_resource type="PackedScene" uid="uid://dhoco3g4c3qm7" path="res://character.tscn" id="1_78stm"]
-[ext_resource type="Texture2D" uid="uid://drhpctq0hyhqa" path="res://icon.svg" id="2_undem"]
+[ext_resource type="Texture2D" uid="uid://drhpctq0hyhqa" path="res://assets/icon.svg" id="2_undem"]
 [ext_resource type="PackedScene" uid="uid://dbneisdksa3x4" path="res://light.tscn" id="3_g1val"]
 [ext_resource type="PackedScene" uid="uid://f8e2qo1adewf" path="res://light_layer.tscn" id="3_hw0qa"]
 
@@ -23,7 +23,8 @@ texture = SubResource("NoiseTexture2D_undem")
 centered = false
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(808, 416)
+modulate = Color(0.129558, 0.129558, 0.129558, 1)
+position = Vector2(809, 416)
 texture = ExtResource("2_undem")
 
 [node name="Character" parent="." instance=ExtResource("1_78stm")]
@@ -34,7 +35,8 @@ radius = 80.0
 
 [node name="Light" parent="." instance=ExtResource("3_g1val")]
 position = Vector2(816, 240)
-radius = 90.0
+rotation = -10.1491
+radius = 114.045
 
 [node name="Light2" parent="." instance=ExtResource("3_g1val")]
 position = Vector2(680, 432)
@@ -42,10 +44,10 @@ radius = 90.0
 
 [node name="FlickeringLight" parent="." instance=ExtResource("3_g1val")]
 position = Vector2(504, 472)
-radius = 180.0
+radius = 170.112
 light_flickering = true
 
 [node name="LightLayer" parent="." instance=ExtResource("3_hw0qa")]
 visible = false
 custom_light_outline_size = 20.0
-shadow_color = Color(0, 0, 0.223529, 0.878431)
+shadow_color = Color(0, 0, 0.223529, 1)
